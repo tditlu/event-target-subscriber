@@ -1,0 +1,23 @@
+{
+  "name": "event-target-subscriber",
+  "description": "EventTarget subscriber",
+  "version": "1.0.0",
+  "author": "tditlu <tditlu@users.noreply.github.com>",
+  "license": "MIT",
+  "keywords": [
+    "event-target-subscriber",
+    "event",
+    "event-target",
+    "subscriber"
+  ],
+  "repository": "tditlu/event-target-subscriber",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ],
+  "engines": {
+    "node": ">= 0.6"
+  }
+}
+
