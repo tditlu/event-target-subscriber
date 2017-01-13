@@ -27,19 +27,16 @@ exports.subscribe = subscribe;
 
 function subscribe(target, type, listener) {
   if (
-    hasAddEventListener(target) &&
+    haveAddEventListener(target) &&
     isString(type) &&
     isFunction(listener)
   ) {
-    target.addEventListener(type, listener, false);
-
-    var subscriber = {
+    target.addEventListener(type, listener);
+    return {
       target: target,
       type: type,
       listener: listener
     };
-    if (Object.freeze) { Object.freeze(subscriber); }
-    return subscriber;
   }
   return null;
 }
@@ -56,11 +53,11 @@ function subscribe(target, type, listener) {
 function unsubscribe(subscriber) {
   if (
     subscriber &&
-    hasRemoveEventListener(subscriber.target) &&
+    haveRemoveEventListener(subscriber.target) &&
     isString(subscriber.type) &&
     isFunction(subscriber.listener)
   ) {
-    subscriber.target.removeEventListener(subscriber.type, subscriber.listener, false);
+    subscriber.target.removeEventListener(subscriber.type, subscriber.listener);
   }
 }
 
@@ -71,7 +68,8 @@ function unsubscribe(subscriber) {
  * @private
  */
 
-function hasAddEventListener(arg) { return arg && arg.addEventListener;}
-function hasRemoveEventListener(arg) { return arg && arg.removeEventListener;}
+function haveAddEventListener(arg) { return arg && arg.addEventListener;}
+function haveRemoveEventListener(arg) { return arg && arg.removeEventListener;}
 function isFunction(arg) { return arg && (typeof arg === 'function'); }
 function isString(arg) { return arg && (typeof arg === 'string'); }
+
